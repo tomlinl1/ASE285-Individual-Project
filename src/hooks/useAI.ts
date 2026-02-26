@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react';
 import { sendToGemini, type ChatTurn } from '../services/aiApi';
 import type { Message } from '../types';
 
-const AI_MODEL = 'gemini-1.5-flash';
+const AI_MODEL = 'gemini-2.5-flash';
 
 function messagesToTurns(messages: Message[]): ChatTurn[] {
   return messages.map((m) => ({
