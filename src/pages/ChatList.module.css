@@ -1,0 +1,82 @@
+.wrapper {
+  max-width: 32rem;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.header h1 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.newButton {
+  padding: 0.5rem 1rem;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.newButton:hover {
+  background: #1d4ed8;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.item {
+  margin-bottom: 0.25rem;
+}
+
+.roomButton {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+}
+
+.roomButton:hover {
+  background: #f3f4f6;
+  border-color: #d1d5db;
+}
+
+.title {
+  font-weight: 500;
+  color: #111827;
+}
+
+.time {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.empty {
+  padding: 2rem;
+  text-align: center;
+  color: #6b7280;
+}
+
+.loading {
+  text-align: center;
+  padding: 2rem;
+  color: #6b7280;
+}

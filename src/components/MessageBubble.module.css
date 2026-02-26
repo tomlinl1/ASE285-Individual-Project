@@ -1,0 +1,38 @@
+.bubble {
+  max-width: 85%;
+  padding: 0.6rem 0.9rem;
+  border-radius: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.user {
+  margin-left: 0;
+  margin-right: auto;
+  background: #2563eb;
+  color: #fff;
+}
+
+.ai {
+  margin-left: auto;
+  margin-right: 0;
+  background: #e5e7eb;
+  color: #1f2937;
+}
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  opacity: 0.9;
+}
+
+.content {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.time {
+  font-size: 0.7rem;
+  margin-top: 0.25rem;
+  opacity: 0.75;
+}

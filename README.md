@@ -173,3 +173,14 @@ AI Study Hub addresses these gaps by providing a shared, transparent, and studen
 - Export feature
 - Testing & UI refinement
 
+---
+
+# Running the app (Sprint 1)
+
+1. Install dependencies: `npm install`
+2. Copy `.env.example` to `.env` and set your Gemini API key:
+   - Get a key at [Google AI Studio](https://aistudio.google.com/apikey)
+   - Add `VITE_GEMINI_API_KEY=your_key` to `.env`
+3. Start the dev server: `npm run dev`
+4. Open the URL shown in the terminal (e.g. http://localhost:5173). Chats and messages persist in the browser via localStorage.
+
