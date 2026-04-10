@@ -11,6 +11,13 @@ export async function generateGeminiReply(turns: Array<{ role: 'user' | 'model';
   }));
 
   const body = {
+    systemInstruction: {
+      parts: [
+        {
+          text: 'You help students learn. Format answers using GitHub-flavored Markdown when it helps clarity: use headings, bullet lists, numbered steps, **bold** for key terms, and fenced code blocks for code or formulas. Do not wrap the entire answer in a single code fence unless the whole reply is code.',
+        },
+      ],
+    },
     contents,
     generationConfig: {
       temperature: 0.7,
