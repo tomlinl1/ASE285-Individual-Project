@@ -3,17 +3,32 @@ import styles from './MessageBubble.module.css';
 
 interface MessageBubbleProps {
   message: Message;
+  currentUserId?: string | null;
 }
 
-export function MessageBubble({ message }: MessageBubbleProps) {
+export function MessageBubble({ message, currentUserId }: MessageBubbleProps) {
   const isUser = message.sender === 'user';
+  const isSelf =
+    isUser && message.userId && currentUserId ? message.userId === currentUserId : false;
+
+  let userLabel = 'You';
+  if (isUser) {
+    if (isSelf || (!message.userId && !message.authorEmail)) {
+      userLabel = 'You';
+    } else if (message.authorEmail) {
+      userLabel = message.authorEmail;
+    } else {
+      userLabel = 'Study partner';
+    }
+  }
+
   return (
     <div
       className={`${styles.bubble} ${isUser ? styles.user : styles.ai}`}
       data-sender={message.sender}
     >
       <div className={styles.label}>
-        {isUser ? 'You' : `AI (${message.model})`}
+        {isUser ? userLabel : `AI (${message.model || 'model'})`}
       </div>
       <div className={styles.content}>{message.content}</div>
       <div className={styles.time}>

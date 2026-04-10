@@ -180,7 +180,98 @@ AI Study Hub addresses these gaps by providing a shared, transparent, and studen
 1. Install dependencies: `npm install`
 2. Copy `.env.example` to `.env` and set your Gemini API key:
    - Get a key at [Google AI Studio](https://aistudio.google.com/apikey)
-   - Add `VITE_GEMINI_API_KEY=your_key` to `.env`
+   - Add `VITE_GEMINI_API_KEY=your_key` to `.env` (Sprint 1 only; Sprint 2 uses server-side Gemini)
 3. Start the dev server: `npm run dev`
 4. Open the URL shown in the terminal (e.g. http://localhost:5173). Chats and messages persist in the browser via localStorage.
+
+---
+
+# Running the app (Sprint 2)
+
+Sprint 2 adds a **backend API** + **MongoDB** + **user accounts**. You must run:
+
+- **MongoDB** (local or Atlas)
+- **Backend** (`server/`) on port `3001`
+- **Frontend** (root) on port `5173`
+
+## 0. Prereqs
+
+- Node.js installed
+- A MongoDB database (local MongoDB or MongoDB Atlas)
+- A Gemini API key from [Google AI Studio](https://aistudio.google.com/apikey)
+
+## 1. MongoDB setup
+
+### Option A: Local MongoDB
+
+- Ensure MongoDB is running locally (default: `mongodb://127.0.0.1:27017`)
+- You can use this connection string in the backend env:
+
+`MONGODB_URI=mongodb://127.0.0.1:27017/ai-study-hub`
+
+### Option B: MongoDB Atlas
+
+- Create a free Atlas cluster
+- Create a database user and allow your IP
+- Copy your connection string and use it for `MONGODB_URI`, for example:
+
+`MONGODB_URI=mongodb+srv://<user>:<password>@<cluster>/<db>?retryWrites=true&w=majority`
+
+## 2. Backend setup (Sprint 2 API)
+
+From the project root:
+
+1. Install backend dependencies:
+
+`cd server && npm install`
+
+2. Create a backend `.env` file:
+
+- Copy `server/.env.example` to `server/.env`
+- Fill in these values:
+
+`PORT=3001`  
+`CLIENT_ORIGIN=http://localhost:5173`  
+`MONGODB_URI=...`  
+`JWT_SECRET=...` (use a long random string)  
+`GEMINI_API_KEY=...`  
+`GEMINI_MODEL=gemini-2.5-flash`
+
+3. Start the backend dev server:
+
+`cd server && npm run dev`
+
+4. Confirm it’s running:
+
+- `GET http://localhost:3001/api/health` → should return `{ "ok": true }`
+- `GET http://localhost:3001/api/health/db` → returns `{ ok: true, mongoConnected: true|false }`
+
+## 3. Frontend setup (React)
+
+From the project root:
+
+1. Install frontend dependencies:
+
+`npm install`
+
+2. (Optional) Set frontend API base URL (defaults to `http://localhost:3001`)
+
+Create `.env` (root) with:
+
+`VITE_API_BASE_URL=http://localhost:3001`
+
+3. Start the frontend dev server:
+
+`npm run dev`
+
+4. Open the URL shown in the terminal (usually http://localhost:5173).
+
+## 4. Quick test checklist (Sprint 2)
+
+1. Open the frontend and **register** a new account
+2. Create a **new chat**
+3. Send a message → backend stores it in MongoDB
+4. The app requests **AI reply** → backend calls Gemini (`gemini-2.5-flash`) and stores the AI response
+5. Go to `/prompts` and **save a prompt**
+6. In a chat, click **Export (md)** (backend serves markdown; you can also use `format=txt`)
 
