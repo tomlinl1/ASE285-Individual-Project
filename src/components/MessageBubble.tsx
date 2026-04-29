@@ -1,4 +1,6 @@
 import type { Message } from '../types';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import styles from './MessageBubble.module.css';
 
 interface MessageBubbleProps {
@@ -30,7 +32,15 @@ export function MessageBubble({ message, currentUserId }: MessageBubbleProps) {
       <div className={styles.label}>
         {isUser ? userLabel : `AI (${message.model || 'model'})`}
       </div>
-      <div className={styles.content}>{message.content}</div>
+      <div className={isUser ? styles.content : `${styles.content} ${styles.mdRoot}`}>
+        {isUser ? (
+          <span className={styles.plain}>{message.content}</span>
+        ) : (
+          <div className={styles.md}>
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>{message.content}</ReactMarkdown>
+          </div>
+        )}
+      </div>
       <div className={styles.time}>
         {new Date(message.createdAt).toLocaleTimeString([], {
           hour: '2-digit',

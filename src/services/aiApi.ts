@@ -17,7 +17,10 @@ export interface SendMessageOptions {
 }
 
 function getApiKey(): string {
-  const key = import.meta.env.VITE_GEMINI_API_KEY;
+  const key =
+    import.meta.env.VITE_GEMINI_API_KEY ??
+    // Vitest/node-only fallback (no effect in the browser bundle)
+    (typeof process !== 'undefined' ? process.env?.VITE_GEMINI_API_KEY : undefined);
   if (!key) {
     throw new Error(
       'Missing VITE_GEMINI_API_KEY. Add it to your .env file. See README for setup.'

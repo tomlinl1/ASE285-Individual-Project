@@ -27,8 +27,142 @@
 }
 
 .content {
-  white-space: pre-wrap;
   word-break: break-word;
+}
+
+.plain {
+  white-space: pre-wrap;
+  display: block;
+}
+
+.mdRoot {
+  white-space: normal;
+}
+
+.md {
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.md :global(p) {
+  margin: 0.4em 0;
+}
+
+.md :global(p:first-child) {
+  margin-top: 0;
+}
+
+.md :global(p:last-child) {
+  margin-bottom: 0;
+}
+
+.md :global(h1),
+.md :global(h2),
+.md :global(h3),
+.md :global(h4) {
+  margin: 0.65em 0 0.35em;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.md :global(h1) {
+  font-size: 1.2rem;
+}
+
+.md :global(h2) {
+  font-size: 1.1rem;
+}
+
+.md :global(h3),
+.md :global(h4) {
+  font-size: 1rem;
+}
+
+.md :global(ul),
+.md :global(ol) {
+  margin: 0.4em 0;
+  padding-left: 1.35rem;
+}
+
+.md :global(li) {
+  margin: 0.2em 0;
+}
+
+.md :global(blockquote) {
+  margin: 0.5em 0;
+  padding-left: 0.75rem;
+  border-left: 3px solid #9ca3af;
+  color: #4b5563;
+}
+
+.md :global(hr) {
+  margin: 0.75rem 0;
+  border: none;
+  border-top: 1px solid #d1d5db;
+}
+
+.md :global(a) {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+.md :global(a:hover) {
+  color: #1e40af;
+}
+
+.md :global(code) {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.88em;
+  background: rgba(0, 0, 0, 0.06);
+  padding: 0.12em 0.35em;
+  border-radius: 0.25rem;
+}
+
+.ai .md :global(code) {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.md :global(pre) {
+  margin: 0.5em 0;
+  padding: 0.65rem 0.75rem;
+  background: #1f2937;
+  color: #f3f4f6;
+  border-radius: 0.4rem;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+.md :global(pre code) {
+  background: none;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+}
+
+.md :global(table) {
+  border-collapse: collapse;
+  margin: 0.5em 0;
+  font-size: 0.9em;
+  width: 100%;
+  display: block;
+  overflow-x: auto;
+}
+
+.md :global(th),
+.md :global(td) {
+  border: 1px solid #d1d5db;
+  padding: 0.35rem 0.5rem;
+  text-align: left;
+}
+
+.md :global(th) {
+  background: #e5e7eb;
+  font-weight: 600;
+}
+
+.md :global(tr:nth-child(even)) {
+  background: rgba(0, 0, 0, 0.03);
 }
 
 .time {
